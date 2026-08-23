@@ -32,7 +32,6 @@ header{
 .account-container{
     display: flex;
     gap: var(--gap-items);
-    font-size: 1.5em;
     align-items: center;
 }
 
