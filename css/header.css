@@ -1,0 +1,30 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-primary);
+}
+
+#header-logo{
+    width: 100px;
+}
+
+.header-nav-main ul{
+    display:flex;
+    gap: var(--gap-items);
+    list-style-type: none;
+}
+
+.account-container{
+    display: flex;
+    gap: var(--gap-items);
+}
+
+.account-container a img{
+    margin-right: var(--gap-items);
+}
