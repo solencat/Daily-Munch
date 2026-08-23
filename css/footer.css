@@ -1,0 +1,69 @@
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-primary);
+    margin: 0.5em;
+    padding: 1em;
+    border-radius: 4px;
+}
+
+/* 1st part of footer navbar */
+.footer-nav{
+    display: flex;
+    gap: var(--gap-items);
+}
+
+/* Ul of footer, displaying the items in a column and removing the auto padding*/
+.footer-nav-link, .footer-data{
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-items);
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* 2nd part of footer, pertaining to legal information */
+.footer-data{
+    align-items:flex-start;
+}
+
+/* Making the 1st link of a category bigger to emphasize importance */
+.footer-nav-link > a{
+    font-size: 1.5em;
+}
+
+/* Changing links basic color to white and removing the auto decoration */
+footer a{
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+/*---------------------*/
+/*---- Responsive  ----*/
+/*---------------------*/
+
+/* Tablet and smaller desktop */
+@media (max-width : 1200px){
+
+    /* Reducing gap of lists */
+    .footer-nav ul, .footer-data{
+        gap: 0.5em;
+    }
+
+    /* Reducing font-size */
+    .footer-nav-link, .footer-data{
+        font-size : 0.8em;
+    }
+
+}
+
+/* Mobile phones and small screens*/
+@media (max-width : 768px){
+
+    /* Changing footer display to column */
+    footer{
+        flex-direction: column;
+    }
+
+}
