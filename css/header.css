@@ -1,30 +1,90 @@
+/* Changing default behaviour for padding, margin and font */
 body{
     padding: 0;
     margin: 0;
+    font-family: var(--font);
 }
 
 header{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: var(--color-primary);
+    margin: 0.5em;
+    padding: 1em;
+    border-radius: 4px;
 }
 
+/* 1st part of header (left or top in small screens) */
 #header-logo{
-    width: 100px;
+    height: 100px;
 }
 
+/* Middle part of header */
 .header-nav-main ul{
     display:flex;
     gap: var(--gap-items);
     list-style-type: none;
+    font-size: 1.5em;
+    margin-left: 0;
 }
 
+/* 3rd part of header (right or bottom in small screens) */
 .account-container{
     display: flex;
     gap: var(--gap-items);
+    font-size: 1.5em;
+    align-items: center;
 }
 
+/* Align icons with their respective link */
+.account-container .profile-link, .login-link{
+    display: flex;
+    align-items: center;
+}
+
+/* Icons size and margin */
 .account-container a img{
-    margin-right: var(--gap-items);
+    margin-right: var(--gap-icons);
+    height: 1.5em;
+}
+
+/* All links in header */
+header a{
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+/* Changes the color of the active tab to better visualise where we are located on the website */
+.tab-active{
+    color: var(--color-accent);
+}
+
+/*---------------------*/
+/*---- Responsive  ----*/
+/*---------------------*/
+
+/* Tablet and smaller desktop */
+@media (max-width : 1200px){
+
+    /* Reducing font-size */
+    .header-nav-main ul, .account-container{
+        font-size : 1.2em;
+    }
+
+}
+
+/* Mobile phones and small screens*/
+@media (max-width : 768px){
+
+    /* Changing header display to column */
+    header{
+        flex-direction: column;
+    }
+
+    /* Reducing font-size */
+    .header-nav-main ul, .account-container{
+        font-size : 1.2em;
+    }
+
 }

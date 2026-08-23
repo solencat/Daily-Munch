@@ -1,8 +1,15 @@
 :root{
+    /* Colors */
     --color-primary : #0b203b;
     --color-secondary : #2a73f0;
     --color-alternative : #f7f1E6;
     --color-white : #ffffff;
     --color-accent : #ebc836;
+
+    /* Gap */
     --gap-items : 1.2em;
+    --gap-icons : 0.5em;
+
+    /* Fonts */
+    --font : "Montserrat", sans-serif;
 }

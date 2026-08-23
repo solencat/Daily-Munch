@@ -5,6 +5,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Daily Munch - Accueil</title>
+
+        <!-- Font Montserrat -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        
+        <!-- Styles -->
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/header.css">
         <link rel="stylesheet" href="../css/footer.css">
@@ -13,28 +20,25 @@
     <body>
         <header>
             <a href="./index.html">
-                <img src="../images/Logo.png" alt="Logo The Daily Munch">
+                <img src="../images/Logo.png" alt="Logo The Daily Munch" id="header-logo">
             </a>
 
-            <nav>
+            <nav class="header-nav-main">
                 <ul>
-                    <li><a href="./index.html">Accueil</a></li>
+                    <li><a href="./index.html" class="tab-active">Accueil</a></li>
                     <li><a href="./repas.html">Repas</a></li>
                     <li><a href="./outils.html">Outils</a></li>
                     <li><a href="./suivi.html">Suivi</a></li>
                 </ul>
             </nav>
 
-            <div class="profile-container">
-                <a href="#" class="profile-link">
-                    <img src="#" alt="profile icon">
+            <div class="account-container">
+                <a href="./profile.html" class="profile-link">
+                    <img src="../images/account_circle.png" alt="profile icon">
                     Profil
                 </a>
-            </div>
-
-            <div class="login-container">
-                <a href="#" class="login-link">
-                    <img src="#" alt="login icon">
+                <a href="./login.html" class="login-link">
+                    <img src="../images/login.png" alt="login icon">
                     Connexion
                 </a>
             </div>
