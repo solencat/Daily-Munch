@@ -25,8 +25,7 @@ header{
     display:flex;
     gap: var(--gap-items);
     list-style-type: none;
-    font-size: 1.5em;
-    margin-left: 0;
+    padding-left: 0;
 }
 
 /* 3rd part of header (right or bottom in small screens) */
@@ -46,12 +45,13 @@ header{
 /* Icons size and margin */
 .account-container a img{
     margin-right: var(--gap-icons);
-    height: 1.5em;
+    height: 1.2em;
 }
 
 /* All links in header */
 header a{
     color: var(--color-white);
+    font-size: 1.5em;
     text-decoration: none;
 }
 
@@ -69,7 +69,7 @@ header a{
 
     /* Reducing font-size */
     .header-nav-main ul, .account-container{
-        font-size : 1.2em;
+        font-size : 0.8em;
     }
 
 }
@@ -80,11 +80,6 @@ header a{
     /* Changing header display to column */
     header{
         flex-direction: column;
-    }
-
-    /* Reducing font-size */
-    .header-nav-main ul, .account-container{
-        font-size : 1.2em;
     }
 
 }
