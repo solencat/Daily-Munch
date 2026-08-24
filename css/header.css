@@ -43,7 +43,7 @@ header{
 
 /* Icons size and margin */
 .account-container a img{
-    margin-right: var(--gap-icons);
+    margin-right: var(--gap-small);
     height: 1.2em;
 }
 

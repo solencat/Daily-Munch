@@ -9,7 +9,7 @@
 
     /* Gap */
     --gap-items : 1.2em;
-    --gap-icons : 0.5em;
+    --gap-small : 0.5em;
 
     /* Fonts */
     --font : "Montserrat", sans-serif;
