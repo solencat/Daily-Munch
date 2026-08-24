@@ -1,0 +1,71 @@
+/* Display flex of main and background lightgray */
+main{
+    display: flex;
+    background-color: var(--color-alternative);
+}
+
+/* Display flex of form in column*/
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Size adjustments, spacing and color to differentiate sections */
+#signup, #login{
+    min-height: 50vh;
+    height: 840px;
+    width: 45%;
+    margin: 0.5em;
+    padding: 1em;;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.404);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-small);
+}
+
+/* Display flex of div containing labels and their input in column with added small gap 0.5em */
+#signup div, #login div{
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-small);
+}
+
+/* Center headers */
+h1, h2{
+    text-align: center;
+}
+
+/* Add size to input and better spacing */
+input{
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    border-radius: 4px;
+}
+
+/* Highlight on focus */
+input:focus{
+    border: solid 2px var(--color-accent);
+}
+
+/* Add backgorund color and transition to buttons */
+button{
+    padding: 0.5em;
+    background-color: var(--color-secondary);
+    cursor: pointer;
+    color: var(--color-white);
+    transition: 0.2s ease-in-out;
+}
+
+/* Add scaling effect to highlight hover of buttons */
+button:hover{
+    border: solid 2px var(--color-accent);
+    background-color: var(--color-secondary-hover);
+    transform: scale(1.05);
+}
+
+/* Slight adjustment to spacing for button of login section */
+#login button{
+    margin-top: var(--gap-items);
+}
