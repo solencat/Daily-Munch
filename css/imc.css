@@ -38,7 +38,11 @@ main #form-bmi div{
 
 /* Div contains result of BMI, is hidden by default */
 main #form-bmi #bmi-result{
-    display: none
+    display: none;
+    font-size: 1.8em;
+    font-weight: bolder;
+    text-align: center;
+    padding: 1em;
 }
 
 /* Remove default padding and margin of p elements in form */
