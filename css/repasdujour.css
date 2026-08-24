@@ -1,0 +1,29 @@
+.meal-overview, .breakfast, .dinner, .supper{
+    border: solid black 1px;
+    margin: 1em;
+}
+
+.meal-overview{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.breakfast, .dinner, .supper{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+h1{
+    grid-area: 1 / 1 / 1 / span 5;
+}
+
+.calories-total{
+    grid-area: 3 / 5 / 3 / 5;
+}
+
+.card-food{
+    display: flex;
+    flex-direction: column;
+}
