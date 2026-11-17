@@ -20,8 +20,8 @@
     </head>
 
     <body>
-        <?php include "components/header.php"; ?>
+        <?php include __DIR__ . "/components/component_header.php"; ?>
 
-        <?php include "components/footer.php"; ?>
+        <?php include __DIR__ . "/components/component_footer.php"; ?>
     </body>
 </html>

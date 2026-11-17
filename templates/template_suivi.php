@@ -19,7 +19,7 @@
     </head>
 
     <body>
-        <?php include "components/header.php"; ?>
+        <?php include __DIR__ . "/components/component_header.php"; ?>
 
         <main>
 
@@ -105,6 +105,6 @@
 
         </main>
 
-        <?php include "components/footer.php"; ?>
+        <?php include __DIR__ . "/components/component_footer.php"; ?>
     </body>
 </html>

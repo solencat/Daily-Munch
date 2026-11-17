@@ -1,6 +1,6 @@
 <footer>
     <nav class="footer-nav">
-        <ul class="footer-nav-link"><a href="./index.html">ACCUEIL</a></ul>
+        <ul class="footer-nav-link"><a href="/">ACCUEIL</a></ul>
 
         <ul class="footer-nav-link">
             <a href="./repas.html">REPAS</a>

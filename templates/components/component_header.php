@@ -1,14 +1,14 @@
 <header>
-    <a href="./index.html">
+    <a href="/">
         <img src="../images/Logo.png" alt="Logo The Daily Munch" id="header-logo">
     </a>
 
     <nav class="header-nav-main">
         <ul>
-            <li><a href="./index.html">ACCUEIL</a></li>
+            <li><a href="/">ACCUEIL</a></li>
             <li><a href="./repas.html">REPAS</a></li>
             <li><a href="./outils.html">OUTILS</a></li>
-            <li><a href="./suivi.html" class="tab-active">SUIVI</a></li>
+            <li><a href="./suivi.html">SUIVI</a></li>
         </ul>
     </nav>
 

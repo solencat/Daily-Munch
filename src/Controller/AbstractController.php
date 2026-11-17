@@ -13,18 +13,7 @@ abstract class AbstractController
      */
     protected function render(string $template, ?string $title, array $data = []): mixed
     {
-       return include __DIR__ . "../../templates/template_" . $template . ".php";
-    }
-
-    /**
-     * Méthode pour générer un composant
-     * @param string $component Le nom du template à inclure
-     * @param array $data Les données à passer au composant
-     * @return void
-     */
-    protected function renderComponent(string $component, array $data = []): void
-    {
-        include __DIR__ . "../../templates/components/component_" . $component . ".php";
+       return include __DIR__ . "/../../templates/template_" . $template . ".php";
     }
 
     /**
@@ -74,4 +63,6 @@ abstract class AbstractController
 
         return !empty($token) && !empty($sessionToken) && hash_equals($sessionToken, $token);
     }
+
+
 }

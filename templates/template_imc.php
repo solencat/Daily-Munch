@@ -19,7 +19,7 @@
     </head>
 
     <body>
-        <?php include "components/header.php"; ?>
+        <?php include __DIR__ . "/components/component_header.php"; ?>
 
         <main>
             <form action="#" method="POST" id="form-bmi">
@@ -52,7 +52,7 @@
             </form>
         </main>
 
-        <?php include "components/footer.php"; ?>
+        <?php include __DIR__ . "/components/component_footer.php"; ?>
     </body>
     <script src="../js/imc.js"></script>
 </html>
