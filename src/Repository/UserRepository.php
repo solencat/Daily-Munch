@@ -23,17 +23,28 @@ class UserRepository
     public function create(User $user): User
     {
         try {
-            $sql = "INSERT INTO `user`(firstname, lastname, email, `password`, img_profil, `grant`) VALUE(?,?,?,?,?,?)";
+            // Requête
+            $sql = "INSERT INTO `user`(firstname, lastname, email, pass, id_role_access) VALUE(?,?,?,?,?)";
+
+            // Préparation de la requête
             $stmt = $this->connexion->prepare($sql);
+
+            // Bind des valeurs à la requête
             $stmt->bindValue(1, $user->getFirstname(), \PDO::PARAM_STR);
             $stmt->bindValue(2, $user->getLastname(), \PDO::PARAM_STR);
             $stmt->bindValue(3, $user->getEmail(), \PDO::PARAM_STR);
             $stmt->bindValue(4, $user->getPassword(), \PDO::PARAM_STR);
-            $stmt->bindValue(5, $user->getImgProfil(), \PDO::PARAM_STR);
-            $stmt->bindValue(6, $user->getGrant(), \PDO::PARAM_STR);
+            $stmt->bindValue(5, $user->getRole(), \PDO::PARAM_STR);
+
+            // Exécution de la requete
             $stmt->execute();
+
+            // Récupération de l'id
             $id = $this->connexion->lastInsertId();
+
+            // Set de l'id
             $user->setId($id);
+
         } catch(\PDOException $e) {
             echo "Erreur " . $e->getMessage();
         }
@@ -48,12 +59,21 @@ class UserRepository
     public function findByEmail(string $email): ?User
     {
         try {
+            // Requête
             $sql = "SELECT u.id_user, u.firstname, u.lastname, u.email, u.`password`, 
             u.created_at, u.updated_at, u.img_profil, u.grant FROM `user` As u 
             WHERE u.email = ?";
+
+            // Préparation de la requête
             $stmt = $this->connexion->prepare($sql);
+
+            // Bind des valeurs à la requête
             $stmt->bindValue(1, $email, \PDO::PARAM_STR);
+
+            // Exécution de la requete
             $stmt->execute();
+
+            // Récupération des informations dans la base de données sous le format tableau associatif
             $data = $stmt->fetch(\PDO::FETCH_ASSOC);
             if($data) {
                 $user = User::hydrate($data);

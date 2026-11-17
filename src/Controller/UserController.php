@@ -26,7 +26,7 @@ class UserController extends AbstractController
             $data["msg"] = $this->userService->insertUser();
         }
         //Retourne la vue 
-        return $this->render('register', 'Inscription', $data ?? []);
+        return $this->render('connexion', 'Inscription', $data ?? []);
     }
 
     public function login():mixed 
@@ -42,7 +42,7 @@ class UserController extends AbstractController
             $data = $this->userService->connectUser();
         }
         //Retourne la vue
-        return $this->render('login', 'Connexion', $data ?? []);
+        return $this->render('connexion', 'Connexion', $data ?? []);
     }
 
     public function logout(): void 

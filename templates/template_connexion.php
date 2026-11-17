@@ -27,39 +27,43 @@
 
                 <form id="form-signup" action="#" method="POST">
                     <h1>S'enregistrer</h1>
-                    <div class="username-container">
-                        <label for="username-signup">Nom d'utilisateur *</label>
-                        <input type="text" placeholder="" id="username-signup" name="username-signup" required>
+
+                    <div class="email-container">
+                        <label for="email">E-mail *</label>
+                        <input type="text" placeholder="jeandupont@gmail.com" id="email" name="email" required>
                     </div>
+
                     <div class="password-container">
                         <label for="password-signup">Mot passe *</label>
                         <input type="password" placeholder="" id="password-signup" name="password-signup" required>
                         <p>Le mot de passe doit contenir au moins 16 caractères alphanumériques</p>
                     </div>
 
+                    <div class="confirm-password-container">
+                        <label for="confirm-password-signup">Mot passe *</label>
+                        <input type="password" placeholder="" id="confirm-password-signup" name="confirm-password-signup" required>
+                    </div>
+
                     <h2>Profil</h2>
-                    <div class="first-name-container">
-                        <label for="first-name">Prénom *</label>
-                        <input type="text" placeholder="Jean" id="first-name" name="first-name" required>
+                    <div class="firstname-container">
+                        <label for="firstname">Prénom *</label>
+                        <input type="text" placeholder="Jean" id="firstname" name="firstname" required>
                     </div>
-                    <div class="surname-container">
-                        <label for="surname">Nom *</label>
-                        <input type="text" placeholder="Dupont" id="surname" name="surname" required>
+                    <div class="lastname-container">
+                        <label for="lastname">Nom *</label>
+                        <input type="text" placeholder="Dupont" id="lastname" name="lastname" required>
                     </div>
-                    <div class="email-container">
-                        <label for="email">E-mail *</label>
-                        <input type="text" placeholder="jeandupont@gmail.com" id="email" name="email" required>
-                    </div>
+                    
                     <div class="height-container">
-                        <label for="height">Taille (en cm)</label>
+                        <label for="height">Taille (en cm) *</label>
                         <input type="number" placeholder="180" id="height" name="height">
                     </div>
                     <div class="weight-container">
-                        <label for="weight">Poids (en kg)</label>
+                        <label for="weight">Poids (en kg) *</label>
                         <input type="text" placeholder="80" id="weight" name="weight">
                     </div>
-                    <h3>* : champ obligatoire</h2>
-                    <button type="submit">S'enregistrer</button>
+                    <h3>* champ obligatoire</h2>
+                    <button type="submit" name="submit">S'enregistrer</button>
                 </form>
             </section>
 
@@ -74,7 +78,7 @@
                         <label for="password-login">Mot passe *</label>
                         <input type="password" placeholder="" id="password-login" name="password-login" required>
                     </div>
-                    <button type="submit">Se connecter</button>
+                    <button type="submit" name="submit">Se connecter</button>
                 </form>
             </section>
 

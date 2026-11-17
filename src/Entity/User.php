@@ -12,15 +12,14 @@ class User
     private string $email;
     private string $password;
     private \DateTimeImmutable $createdAt;
-    private ?string $imgProfil;
-    private ?string $grant;
+    private string $role;
 
     //Constructeur
     public function __construct(
         string $firstname,
         string $lastname,
         string $email,
-        string $password
+        string $password,
     ) {
         $this->firstname = $firstname;
         $this->lastname = $lastname;
@@ -95,26 +94,14 @@ class User
         $this->createdAt = $createdAt;
     }
 
-    public function getImgProfil(): ?string
+    public function getRole(): string
     {
-        return $this->imgProfil;
+        return $this->role;
     }
 
-
-    public function setImgProfil(?string  $imgProfil): void
+    public function setRole(string  $role): void
     {
-        $this->imgProfil = $imgProfil;
-    }
-
-    public function getGrant(): ?string
-    {
-        return $this->grant;
-    }
-
-
-    public function setGrant(?string  $grant): void
-    {
-        $this->grant = $grant;
+        $this->role = $role;
     }
 
     /**
@@ -135,8 +122,7 @@ class User
         //Set des attributs
         $newUser->setId($user["id_user"] ?? null);
         $newUser->setCreatedAt(new \DateTimeImmutable($user["created_at"] ?? "") ?? null);
-        $newUser->setImgProfil($user["img_profil"] ?? null);
-        $newUser->setGrant($user["grant"] ?? "ROLE_USER");
+        $newUser->setRole($user["grant"] ?? "ROLE_USER");
         
         //Retourne l'objet User
         return $newUser;

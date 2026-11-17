@@ -101,7 +101,7 @@ class UserService
             "firstname" => $user->getFirstname(),
             "lastname" => $user->getLastname(),
             "email" => $user->getEmail(),
-            "grant" => $user->getGrant() ?? ""
+            "grant" => $user->getRole() ?? ""
         ];
 
         $errors["success"] = "Connecté";
