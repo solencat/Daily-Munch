@@ -3,27 +3,27 @@ include '../vendor/autoload.php';
 
 session_start();
 
-//récupération de l'URL (composante)
+// Récupération de l'URL
 $url = parse_url($_SERVER["REQUEST_URI"]);
 
-//extraction du path
+// Extraction du path
 $path = isset($url["path"]) ? $url["path"] : "/";
 
-//importer les variables d'environnement 
+// Importation des variables d'environnement 
 $dotenv = Dotenv\Dotenv::createImmutable('../');
 $dotenv->load();
 
-//importer
+// Importation des Controller
 use App\Controller\HomeController;
 use App\Controller\UserController;
 
 
-//instancier les controllers
+// Instanciation des controllers
 $homeController = new HomeController();
 $userController = new UserController();
 
 
-//test des valeurs du path
+// Routage depuis le path
 switch ($path) {
     case '/':
         $homeController->home();
