@@ -11,6 +11,8 @@ class User
     private string $lastname;
     private string $email;
     private string $password;
+    private int $height;
+    private int $weight;
     private \DateTimeImmutable $createdAt;
     private string $role;
 
@@ -18,11 +20,15 @@ class User
     public function __construct(
         string $firstname,
         string $lastname,
+        int $height,
+        int $weight,
         string $email,
         string $password,
     ) {
         $this->firstname = $firstname;
         $this->lastname = $lastname;
+        $this->weight = $weight;
+        $this->height = $height;
         $this->email = $email;
         $this->password = $password;
         $this->createdAt = new \DateTimeImmutable();
@@ -45,7 +51,6 @@ class User
         return $this->firstname;
     }
 
-
     public function setFirstname(string  $firstname): void
     {
         $this->firstname = $firstname;
@@ -56,17 +61,35 @@ class User
         return $this->lastname;
     }
 
-
     public function setLastname(string  $lastname): void
     {
         $this->lastname = $lastname;
+    }
+
+    public function getWeight(): int
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(string  $weight): void
+    {
+        $this->weight = $weight;
+    }
+
+    public function getHeight(): int
+    {
+        return $this->height;
+    }
+
+    public function setHeight(string  $height): void
+    {
+        $this->height = $height;
     }
 
     public function getEmail(): string
     {
         return $this->email;
     }
-
 
     public function setEmail(string  $email): void
     {
@@ -77,7 +100,6 @@ class User
     {
         return $this->password;
     }
-
 
     public function setPassword(string  $password): void
     {
@@ -115,14 +137,16 @@ class User
         $newUser = new User(
             $user["firstname"],
             $user["lastname"],
+            $user["height"],
+            $user["weight"],
             $user["email"],
-            $user["password"]
+            $user["pass"]
         );
         
         //Set des attributs
         $newUser->setId($user["id_user"] ?? null);
         $newUser->setCreatedAt(new \DateTimeImmutable($user["created_at"] ?? "") ?? null);
-        $newUser->setRole($user["grant"] ?? "ROLE_USER");
+        $newUser->setRole($user["role"] ?? 2);
         
         //Retourne l'objet User
         return $newUser;

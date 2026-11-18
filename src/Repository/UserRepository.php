@@ -24,7 +24,7 @@ class UserRepository
     {
         try {
             // Requête
-            $sql = "INSERT INTO `user`(firstname, lastname, email, pass, id_role_access) VALUE(?,?,?,?,?)";
+            $sql = "INSERT INTO user_identification(firstname, lastname, height, weight, email, pass, id_role_access) VALUE(?,?,?,?,?,?,?)";
 
             // Préparation de la requête
             $stmt = $this->connexion->prepare($sql);
@@ -32,9 +32,11 @@ class UserRepository
             // Bind des valeurs à la requête
             $stmt->bindValue(1, $user->getFirstname(), \PDO::PARAM_STR);
             $stmt->bindValue(2, $user->getLastname(), \PDO::PARAM_STR);
-            $stmt->bindValue(3, $user->getEmail(), \PDO::PARAM_STR);
-            $stmt->bindValue(4, $user->getPassword(), \PDO::PARAM_STR);
-            $stmt->bindValue(5, $user->getRole(), \PDO::PARAM_STR);
+            $stmt->bindValue(3, $user->getHeight(), \PDO::PARAM_INT);
+            $stmt->bindValue(4, $user->getWeight(), \PDO::PARAM_INT);
+            $stmt->bindValue(5, $user->getEmail(), \PDO::PARAM_STR);
+            $stmt->bindValue(6, $user->getPassword(), \PDO::PARAM_STR);
+            $stmt->bindValue(7, $user->getRole(), \PDO::PARAM_STR);
 
             // Exécution de la requete
             $stmt->execute();
@@ -60,10 +62,10 @@ class UserRepository
     {
         try {
             // Requête
-            $sql = "SELECT u.id_user, u.firstname, u.lastname, u.email, u.`password`, 
-            u.created_at, u.updated_at, u.img_profil, u.grant FROM `user` As u 
+            $sql = "SELECT u.id_user_identification, u.firstname, u.lastname, u.height, u.weight, u.email, u.pass, 
+            u.id_role_access FROM user_identification As u 
             WHERE u.email = ?";
-
+            
             // Préparation de la requête
             $stmt = $this->connexion->prepare($sql);
 

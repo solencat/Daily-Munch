@@ -28,6 +28,9 @@ switch ($path) {
     case '/':
         $homeController->home();
         break;
+    case '/connection':
+        $userController->connection();
+        break;
     case '/register':
         $userController->register();
         break;

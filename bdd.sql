@@ -11,10 +11,10 @@ CREATE TABLE IF NOT EXISTS user_identification(
     id_user_identification INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     firstname VARCHAR(50) NOT NULL,
     lastname VARCHAR(50) NOT NULL,
-    weight INT NOT NULL,
     size INT NOT NULL,
-    pass VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL,
+    weight INT NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    pass VARCHAR(100) NOT NULL,
     id_role_access INT NOT NULL,
     CONSTRAINT fk_user_identification_role_access
 	   FOREIGN KEY(id_role_access)

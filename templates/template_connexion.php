@@ -25,7 +25,7 @@
 
             <section id="signup">
 
-                <form id="form-signup" action="#" method="POST">
+                <form id="form-signup" action="/register" method="POST">
                     <h1>S'enregistrer</h1>
 
                     <div class="email-container">
@@ -34,15 +34,17 @@
                     </div>
 
                     <div class="password-container">
-                        <label for="password-signup">Mot passe *</label>
-                        <input type="password" placeholder="" id="password-signup" name="password-signup" required>
-                        <p>Le mot de passe doit contenir au moins 16 caractères alphanumériques</p>
+                        <label for="pass">Mot passe *</label>
+                        <input type="password" placeholder="" id="pass" name="pass" required>
                     </div>
 
                     <div class="confirm-password-container">
-                        <label for="confirm-password-signup">Mot passe *</label>
-                        <input type="password" placeholder="" id="confirm-password-signup" name="confirm-password-signup" required>
+                        <label for="confirm-pass">Mot passe *</label>
+                        <input type="password" placeholder="" id="confirm-pass" name="confirm-pass" required>
                     </div>
+
+                    <p>Le mot de passe doit contenir au moins 16 caractères alphanumériques</p>
+
 
                     <h2>Profil</h2>
                     <div class="firstname-container">
@@ -63,22 +65,27 @@
                         <input type="text" placeholder="80" id="weight" name="weight">
                     </div>
                     <h3>* champ obligatoire</h2>
-                    <button type="submit" name="submit">S'enregistrer</button>
+                    <button type="submit" name="submit" value="enregistrement">S'enregistrer</button>
+                    <p><?= $data["msg"] ?? "" ?></p>
                 </form>
             </section>
 
             <section id="login">
-                <form id ="form-login" action="#" method="POST">
+                <form id ="form-login" action="/login" method="POST">
                     <h1>Se connecter</h1>
-                    <div class="username-container">
-                        <label for="username-login">Nom d'utilisateur *</label>
-                        <input type="text" placeholder="" id="username-login" name="username-login" required>
+
+                    <div class="email-container">
+                        <label for="email">E-mail *</label>
+                        <input type="text" placeholder="jeandupont@gmail.com" id="email" name="email" required>
                     </div>
+
                     <div class="password-container">
-                        <label for="password-login">Mot passe *</label>
-                        <input type="password" placeholder="" id="password-login" name="password-login" required>
+                        <label for="pass">Mot passe *</label>
+                        <input type="password" placeholder="" id="pass" name="pass" required>
                     </div>
-                    <button type="submit" name="submit">Se connecter</button>
+
+                    <button type="submit" name="submit" value="connexion">Se connecter</button>
+                    <p><?= $data["msg"] ?? "" ?></p>
                 </form>
             </section>
 

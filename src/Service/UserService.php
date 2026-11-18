@@ -20,13 +20,13 @@ class UserService
     {
         //Tester si les champs obligatoire sont vides
         if (
+            empty($_POST["email"]) ||
+            empty($_POST["pass"]) ||
             empty($_POST["firstname"]) ||
             empty($_POST["lastname"]) ||
-            empty($_POST["email"]) ||
-            empty($_POST["password"]) ||
-            empty($_POST["confirm-password"]) ||
-            empty($_POST["size"]) ||
-            empty($_POST["weight"])
+            empty($_POST["height"]) ||
+            empty($_POST["weight"]) ||
+            empty($_POST["confirm-pass"])             
         ) {
             return "Veuillez remplir tous les champs du formulaire";
         }
@@ -38,14 +38,15 @@ class UserService
         if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
             return "L'email : " . $_POST["email"] . " est invalide";
         }
+        
 
         //Tests si les 2 mot de sont différents
-        if ($_POST["password"] != $_POST["confirm-password"]) {
+        if ($_POST["pass"] != $_POST["confirm-pass"]) {
             return "Les mots de passe ne sont pas identiques";
         }
 
         //Test si le mot de passe est plus petit que 8 caractères
-        if (strlen($_POST["password"]) < 8) {
+        if (strlen($_POST["pass"]) < 8) {
             return "Le mot de passe est trop court il faut 8 caractères au minimum";
         }
 
@@ -58,7 +59,7 @@ class UserService
         }
 
         //Hasher le mot de passe
-        $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        $hash = password_hash($_POST["pass"], PASSWORD_DEFAULT);
 
         //hydrater l'objet User
         $newUser = User::hydrate($_POST);
@@ -74,11 +75,13 @@ class UserService
 
     public function connectUser(): array
     {
+        
         $errors = [];
         Tools::sanitizeArray($_POST);
-        
+
         //Récupération du compte
         $user = $this->userRepository->findByEmail($_POST["email"]->email);
+        dd("Yep email valide");
 
         //Test si le compte existe
         if (!$user) {

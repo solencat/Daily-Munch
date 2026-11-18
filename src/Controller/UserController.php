@@ -15,6 +15,15 @@ class UserController extends AbstractController
         $this->userService = new UserService();
     }
 
+    public function connection(): mixed
+    {
+        //redirection vers accueil si connecté
+        if (isset($_SESSION["user"])) {
+            header('Location:/');
+        }
+        return $this->render('connexion', 'Page de connexion', $data ?? []);
+    }
+
     public function register(): mixed
     {
         //redirection vers accueil si connecté
@@ -28,7 +37,7 @@ class UserController extends AbstractController
         //Retourne la vue 
         return $this->render('connexion', 'Inscription', $data ?? []);
     }
-
+    
     public function login():mixed 
     {
         //redirection vers accueil si connecté
