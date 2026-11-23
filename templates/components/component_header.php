@@ -31,7 +31,9 @@
             <img src="../images/account_circle.png" alt="profile icon">
             PROFIL
         </a>
-        <a href="./connexion.html" class="login-link">
+        <a href="./connection" class="login-link 
+            <?= $currentPage == "/connection" ? "tab-active" : ""?>
+            ">
             <img src="../images/login.png" alt="login icon">
             CONNEXION
         </a>

@@ -5,7 +5,7 @@ namespace App\Entity;
 
 class User
 {
-    //Attributs
+    // Attributs
     private ?int $id;
     private string $firstname;
     private string $lastname;
@@ -16,7 +16,7 @@ class User
     private \DateTimeImmutable $createdAt;
     private string $role;
 
-    //Constructeur
+    // Constructeur
     public function __construct(
         string $firstname,
         string $lastname,
@@ -34,7 +34,6 @@ class User
         $this->createdAt = new \DateTimeImmutable();
     }
 
-    //Getters et Setters
     //Getters et Setters
     public function getId(): ?int
     {
@@ -133,7 +132,7 @@ class User
      */
     public static function hydrate(array $user): User
     {
-        //Création d'un objet User
+        // Initialisation d'un objet User
         $newUser = new User(
             $user["firstname"],
             $user["lastname"],
@@ -143,12 +142,11 @@ class User
             $user["pass"]
         );
         
-        //Set des attributs
+        // Setter les attributs
         $newUser->setId($user["id_user"] ?? null);
         $newUser->setCreatedAt(new \DateTimeImmutable($user["created_at"] ?? "") ?? null);
         $newUser->setRole($user["role"] ?? 2);
-        
-        //Retourne l'objet User
+
         return $newUser;
     }
 }

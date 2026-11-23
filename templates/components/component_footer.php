@@ -26,7 +26,10 @@
                 <a href="./tdee.html">TDEE</a>
             </li>
             <li>
-                <a href="./imc.html">IMC</a>
+                <a href="/bmi"
+                    <?= $currentPage == "/bmi" ? "class='tab-active'" : ""?>
+                    >IMC
+                </a>
             </li>
         </ul>
 

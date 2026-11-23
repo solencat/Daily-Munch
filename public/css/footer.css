@@ -28,6 +28,10 @@ footer{
     align-items:flex-start;
 }
 
+.footer-nav-link li{
+    padding: 0;
+}
+
 /* Making the 1st link of a category bigger to emphasize importance */
 .footer-nav-link > a{
     font-size: 1.5em;

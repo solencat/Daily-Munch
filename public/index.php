@@ -16,11 +16,13 @@ $dotenv->load();
 // Importation des Controller
 use App\Controller\HomeController;
 use App\Controller\UserController;
+use App\Controller\ToolController;
 
 
 // Instanciation des controllers
 $homeController = new HomeController();
 $userController = new UserController();
+$toolController = new ToolController();
 
 
 // Routage depuis le path
@@ -39,6 +41,9 @@ switch ($path) {
         break;
     case '/logout':
         $userController->logout();
+        break;
+    case '/bmi':
+        $toolController->bmi();
         break;
     default:
         echo "Erreur 404";
