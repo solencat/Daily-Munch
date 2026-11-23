@@ -6,6 +6,7 @@
     },
     "require": {
         "symfony/var-dumper": "*",
-        "vlucas/phpdotenv": "^5.7"
+        "vlucas/phpdotenv": "^5.7",
+        "lemmon/validator": "^0.19.0"
     }
 }

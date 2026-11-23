@@ -5,6 +5,7 @@ namespace App\Service;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Utils\Tools;
+use App\Utils\UserFormValidator;
 
 class UserService
 {
@@ -22,11 +23,11 @@ class UserService
         if (
             empty($_POST["email"]) ||
             empty($_POST["pass"]) ||
+            empty($_POST["confirm-pass"]) ||            
             empty($_POST["firstname"]) ||
             empty($_POST["lastname"]) ||
             empty($_POST["height"]) ||
-            empty($_POST["weight"]) ||
-            empty($_POST["confirm-pass"])             
+            empty($_POST["weight"])
         ) {
             return "Veuillez remplir tous les champs du formulaire";
         }
@@ -34,20 +35,18 @@ class UserService
         //Nettoyer les données
         Tools::sanitizeArray($_POST);
 
+        
+
         //Tests Si email est non valide
         if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
             return "L'email : " . $_POST["email"] . " est invalide";
         }
         
-
-        //Tests si les 2 mot de sont différents
-        if ($_POST["pass"] != $_POST["confirm-pass"]) {
-            return "Les mots de passe ne sont pas identiques";
-        }
-
-        //Test si le mot de passe est plus petit que 8 caractères
-        if (strlen($_POST["pass"]) < 8) {
-            return "Le mot de passe est trop court il faut 8 caractères au minimum";
+        // Validation
+        $userValidator = new UserFormValidator();
+        $result = $userValidator->validate($_POST);
+        if(!$result["valid"]){
+            return $result["errors"];
         }
 
         //récupérer le compte

@@ -2,6 +2,9 @@
 
 namespace App\Utils;
 
+use Lemmon\Validator\ValidationException;
+use Lemmon\Validator\Validator;
+
 class Tools
 {
     public static function sanitize(string $str): string
@@ -20,4 +23,5 @@ class Tools
             }
         }
     }
+   
 }
