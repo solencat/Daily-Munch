@@ -121,7 +121,8 @@ class UserService
         //supprime le cookie dans le navigateur
         unset($_COOKIE["PHPSESSID"]);
         //Redirection vers home
-        header('Location:/');
+        echo "Déconnexion en cours (2s)";
+        header('Refresh:2; url=/');
     }
 
     
