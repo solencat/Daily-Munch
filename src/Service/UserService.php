@@ -75,23 +75,23 @@ class UserService
     public function connectUser(): array
     {
         
-        $errors = [];
+        $data = [];
         Tools::sanitizeArray($_POST);
-
+        // dd($_POST["email"]);
         //Récupération du compte
-        $user = $this->userRepository->findByEmail($_POST["email"]->email);
-        dd("Yep email valide");
+        $user = $this->userRepository->findByEmail($_POST["email"]);
+        
 
         //Test si le compte existe
         if (!$user) {
-            $errors["errors"] = "Les informations de connexion ne sont pas valides";
-            return $errors;
+            $data["msg"] = "Les informations de connexion ne sont pas valides";
+            return $data;
         }
 
         //Test si le mot de passe est valide
-        if (!password_verify($_POST["password"]->password, $user->getPassword())) {
-            $errors["errors"] = "Les informations de connexion ne sont pas valides";
-            return $errors;
+        if (!password_verify($_POST["pass"], $user->getPassword())) {
+            $data["msg"] = "Les informations de connexion ne sont pas valides";
+            return $data;
         }
 
         //Renouvellement de l'id de session
@@ -106,9 +106,9 @@ class UserService
             "grant" => $user->getRole() ?? ""
         ];
 
-        $errors["success"] = "Connecté";
+        $data["msg"] = "Connecté";
         header("Refresh:2; url=/");
-        return $errors;
+        return $data;
     }
 
     /**

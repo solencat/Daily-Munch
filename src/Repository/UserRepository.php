@@ -77,6 +77,7 @@ class UserRepository
 
             // Récupération des informations dans la base de données sous le format tableau associatif
             $data = $stmt->fetch(\PDO::FETCH_ASSOC);
+
             if($data) {
                 $user = User::hydrate($data);
             }
