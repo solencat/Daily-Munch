@@ -79,7 +79,6 @@ class UserService
         //Récupération du compte
         $user = $this->userRepository->findByEmail($_POST["email"]);
         
-
         //Test si le compte existe
         if (!$user) {
             $data["msg"] = "Les informations de connexion ne sont pas valides";
