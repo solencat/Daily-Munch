@@ -33,9 +33,7 @@ class UserService
         }
 
         //Nettoyer les données
-        Tools::sanitizeArray($_POST);
-
-        
+        Tools::sanitizeArray($_POST);        
 
         //Tests Si email est non valide
         if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
