@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Utils;
+
 use Lemmon\Validator\Validator;
 
 class UserFormValidator
