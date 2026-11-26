@@ -36,11 +36,6 @@ class UserService
 
         //Nettoyer les données
         Tools::sanitizeArray($_POST);        
-
-        //Tests Si email est non valide
-        if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-            return "L'email : " . $_POST["email"] . " est invalide";
-        }
         
         // Validation
         $userValidator = new UserFormValidator();
@@ -77,7 +72,7 @@ class UserService
         
         $data = [];
         Tools::sanitizeArray($_POST);
-        // dd($_POST["email"]);
+        
         //Récupération du compte
         $user = $this->userRepository->findByEmail($_POST["email"]);
         
