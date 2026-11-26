@@ -2,6 +2,8 @@
 
 namespace App\Service;
 
+require_once 'vendor/autoload.php';
+
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Utils\Tools;
