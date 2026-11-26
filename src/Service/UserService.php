@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-require_once 'vendor/autoload.php';
+include_once '../vendor/autoload.php';
 
 use App\Entity\User;
 use App\Repository\UserRepository;
@@ -19,20 +19,10 @@ class UserService
         $this->userRepository = new UserRepository();
     }
 
+
+
     public function insertUser(): string
     {
-        //Tester si les champs obligatoire sont vides
-        if (
-            empty($_POST["email"]) ||
-            empty($_POST["pass"]) ||
-            empty($_POST["confirm-pass"]) ||            
-            empty($_POST["firstname"]) ||
-            empty($_POST["lastname"]) ||
-            empty($_POST["height"]) ||
-            empty($_POST["weight"])
-        ) {
-            return "Veuillez remplir tous les champs du formulaire";
-        }
 
         //Nettoyer les données
         Tools::sanitizeArray($_POST);        
@@ -41,7 +31,11 @@ class UserService
         $userValidator = new UserFormValidator();
         $result = $userValidator->validate($_POST);
         if(!$result["valid"]){
-            return $result["errors"];
+            $message = "";
+            foreach($result["errors"] as $error){
+                $message = $message . "<br>" . $error->getMessage();
+            }
+            return $message;
         }
 
         //récupérer le compte
