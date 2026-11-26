@@ -12,45 +12,43 @@ class UserFormValidator
         $this->validator = Validator::isAssociative([
             "email" => Validator::isString()
                 ->pipe("trim")
-                ->required("L'email doit être remplis")
+                ->required("L'email doit être rempli")
                 ->email("Format d'email invalide"),
                 
             "pass" => Validator::isString()
                 ->pipe("trim")
-                ->required("Le pass doit être remplis")
+                ->required("Le passe doit être rempli")
                 ->minLength(16, "Il faut au minimum 16 caractères"),
             
             "confirm-pass" => Validator::isString()
                 ->pipe("trim")
-                ->required("Le pass doit être remplis")
+                ->required("Le passe de confirmation doit être rempli")
                 ->satisfies(
                     function($value, $input){
                         return isset($input["pass"]) && $value === $input["pass"];
                     },
-                    "Les mots de pass ne correspondent pas"
+                    "Les mots de passes ne correspondent pas"
                 ),
 
             "firstname" => Validator::isString()
                 ->pipe("trim")
-                ->required("Le prénom doit être remplis")
-                ->notEmpty("Le pass ne peut pas être vide"),
+                ->required("Le prénom doit être rempli")
+                ->notEmpty("Le prénom ne peut pas être vide"),
 
             "lastname" => Validator::isString()
                 ->pipe("trim")
-                ->required("Le nom de famille doit être remplis")
-                ->notEmpty("Le pass ne peut pas être vide"),
+                ->required("Le nom de famille doit être rempli")
+                ->notEmpty("Le nom de famille ne peut pas être vide"),
 
             "height" => Validator::isInt()
-                ->pipe("trim")
                 ->coerce()
-                ->required("La taille doit être remplis")
-                ->positive("Le nombre doit être positif"),
+                ->required("La taille doit être rempli")
+                ->positive("Le taille doit être un nombre positif"),
 
             "weight" => Validator::isInt()
-                ->pipe("trim")
                 ->coerce()
-                ->required("La taille doit être remplis")
-                ->positive("Le nombre doit être positif"),
+                ->required("Le poids doit être rempli")
+                ->positive("Le poids doit être un nombre positif"),
                 
         ]);
     }
