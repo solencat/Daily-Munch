@@ -23,8 +23,10 @@ class UserFormValidator
             "confirm-pass" => Validator::isString()
                 ->pipe("trim")
                 ->required("Le passe de confirmation doit être rempli")
+                // Lemmon appelle la règle avec (valeur, clé, tableau complet) :
+                // le deuxième paramètre est la clé du champ, pas les données.
                 ->satisfies(
-                    function($value, $input){
+                    function($value, $key, $input){
                         return isset($input["pass"]) && $value === $input["pass"];
                     },
                     "Les mots de passes ne correspondent pas"

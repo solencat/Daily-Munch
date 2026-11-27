@@ -143,9 +143,11 @@ class User
         );
         
         // Setter les attributs
-        $newUser->setId($user["id_user"] ?? null);
-        $newUser->setCreatedAt(new \DateTimeImmutable($user["created_at"] ?? "") ?? null);
-        $newUser->setRole($user["role"] ?? 2);
+        // La requête renvoie id_user_identification et id_role_access : lire
+        // "id_user" laissait l'identifiant à null, donc la session sans id.
+        $newUser->setId(isset($user["id_user_identification"]) ? (int) $user["id_user_identification"] : null);
+        $newUser->setCreatedAt(new \DateTimeImmutable($user["created_at"] ?? "now"));
+        $newUser->setRole((string) ($user["role"] ?? $user["id_role_access"] ?? 2));
 
         return $newUser;
     }

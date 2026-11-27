@@ -15,13 +15,17 @@
                 >ACCUEIL</a>
             </li>
             <li>
-                <a href="./repas.html">REPAS</a>
+                <a href="/repas"
+                <?= $currentPage == "/repas" ? "class='tab-active'" : ""?>
+                >REPAS</a>
             </li>
             <li>
                 <a href="./outils.html">OUTILS</a>
             </li>
             <li>
-                <a href="./suivi.html">SUIVI</a>
+                <a href="/suivi"
+                <?= $currentPage == "/suivi" ? "class='tab-active'" : ""?>
+                >SUIVI</a>
             </li>
         </ul>
     </nav>
@@ -42,7 +46,7 @@
                 PROFIL
             </a>
             <a href="./logout" class="logout-link">
-                <img src="../images/logout.png" alt="logout icon">
+                <img src="../images/logout.svg" alt="">
                 DECONNEXION
             </a>
         </div>

@@ -64,5 +64,29 @@ abstract class AbstractController
         return !empty($token) && !empty($sessionToken) && hash_equals($sessionToken, $token);
     }
 
+    /**
+     * Identifiant de l'utilisateur connecté, ou null s'il n'y en a pas.
+     *
+     * La session est posée par UserService::connectUser(). Les sessions
+     * ouvertes avant la correction de User::hydrate() n'ont pas d'id : on le
+     * retrouve alors avec l'email plutôt que de déconnecter la personne.
+     */
+    protected function currentUserId(): ?int
+    {
+        $sessionUser = $_SESSION["user"] ?? null;
+
+        if (!is_array($sessionUser) || empty($sessionUser["email"])) {
+            return null;
+        }
+
+        $userId = (int) ($sessionUser["id"] ?? 0);
+
+        if ($userId === 0) {
+            $user = (new \App\Repository\UserRepository())->findByEmail((string) $sessionUser["email"]);
+            $userId = (int) ($user?->getId() ?? 0);
+        }
+
+        return $userId > 0 ? $userId : null;
+    }
 
 }

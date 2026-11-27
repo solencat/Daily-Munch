@@ -1,0 +1,513 @@
+/* Suivi des repas — sobre, contrasté, lisible à forte taille de police. */
+
+/* Sans border-box, une carte en width:100% dépasse la largeur du mobile
+   (son padding s'ajoute aux 100%) et le contenu est rogné à droite. */
+.repas-page,
+.repas-page *,
+.repas-page *::before,
+.repas-page *::after{
+    box-sizing: border-box;
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.repas-page{
+    background-color: var(--color-alternative);
+    padding: 2em 1em 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+}
+
+.repas-page h1{
+    color: var(--color-primary);
+    font-size: 2.1em;
+    margin: 0;
+}
+
+.repas-page h2{
+    color: var(--color-primary);
+    font-size: 1.45em;
+    margin: 0 0 1em;
+}
+
+.repas-page h3{
+    color: var(--color-primary);
+    font-size: 1.15em;
+    margin: 0;
+}
+
+.repas-page p,
+.repas-page li,
+.repas-page label,
+.repas-page legend{
+    color: var(--color-primary);
+}
+
+/* --- navigation entre les journées --- */
+
+.jour-navigation{
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    flex-wrap: wrap;
+    background-color: var(--color-primary);
+    border-radius: 8px;
+    padding: 0.75em 1em;
+}
+
+.jour-navigation .lien-jour{
+    color: var(--color-white);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: 0.5em 0.75em;
+    border-radius: 6px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.jour-navigation .lien-jour:hover,
+.jour-navigation .lien-jour:focus-visible{
+    background-color: #1b5ccd;
+}
+
+.lien-jour--inactif{
+    color: #c9d3e2;
+    text-decoration: none;
+    font-style: italic;
+}
+
+.jour-courant{
+    color: var(--color-accent) !important;
+    font-weight: 700;
+    font-size: 1.15em;
+    margin: 0;
+}
+
+/* --- messages --- */
+
+.flash{
+    width: 100%;
+    max-width: 1000px;
+    margin: 0;
+    padding: 1em 1em 1em 1.5em;
+    border-radius: 8px;
+    border-left: 8px solid;
+    list-style: none;
+}
+
+.flash--succes{
+    background-color: #e7f6e9;
+    border-color: #1c7c33;
+}
+
+.flash--erreur{
+    background-color: #fdeaea;
+    border-color: #a11717;
+}
+
+.flash li{
+    margin: 0.25em 0;
+}
+
+/* --- cartes --- */
+
+.carte{
+    width: 100%;
+    max-width: 1000px;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.18);
+    padding: 1.75em;
+}
+
+.champs-ligne{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+}
+
+.champ{
+    display: flex;
+    flex-direction: column;
+    gap: 0.35em;
+    flex: 1 1 260px;
+}
+
+.champ label,
+fieldset legend{
+    font-weight: 700;
+}
+
+.champ input{
+    font: inherit;
+    font-size: 1.05em;
+    padding: 0.6em 0.7em;
+    border: 2px solid #6b7c94;
+    border-radius: 6px;
+    color: var(--color-primary);
+    background-color: var(--color-white);
+    min-height: 44px;
+}
+
+.champ input:focus-visible,
+.resultat-quantite:focus-visible,
+.selection-quantite:focus-visible{
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+.aide{
+    font-size: 0.95em;
+    color: #3f5069 !important;
+    margin: 0;
+}
+
+/* --- produits --- */
+
+fieldset.produits{
+    border: 2px solid #d6dde8;
+    border-radius: 8px;
+    padding: 1.25em;
+    margin: 1.5em 0;
+}
+
+fieldset.produits legend{
+    padding: 0 0.5em;
+    font-size: 1.1em;
+}
+
+.titre-selection{
+    margin: 1.5em 0 0.75em;
+}
+
+.resultats,
+.selection{
+    list-style: none;
+    padding: 0;
+    margin: 0.75em 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+}
+
+.resultat{
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr) 150px auto;
+    align-items: center;
+    gap: 0.5em 1em;
+    border: 2px solid #d6dde8;
+    border-radius: 8px;
+    padding: 0.75em 1em;
+    background-color: #fbfcfe;
+}
+
+.ligne-selection{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 150px auto auto;
+    align-items: center;
+    gap: 0.5em 1em;
+    border: 2px solid #d6dde8;
+    border-radius: 8px;
+    padding: 0.75em 1em;
+    background-color: #fbfcfe;
+}
+
+.resultat-vignette{
+    width: 56px;
+    height: 56px;
+    border-radius: 6px;
+    background-color: var(--color-white);
+    border: 1px solid #e7ecf3;
+}
+
+.resultat-vignette img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.resultat-quantite-bloc{
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+    min-width: 0;
+}
+
+.resultat-infos,
+.ligne-infos{
+    flex: 1 1 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+}
+
+.resultat-nom,
+.produit-nom{
+    font-weight: 700;
+}
+
+.resultat-detail,
+.produit-detail{
+    font-size: 0.95em;
+    color: #3f5069 !important;
+}
+
+.resultat-quantite,
+.selection-quantite{
+    font: inherit;
+    font-size: 1.05em;
+    width: 100%;
+    padding: 0.5em 0.6em;
+    border: 2px solid #6b7c94;
+    border-radius: 6px;
+    min-height: 44px;
+    color: var(--color-primary);
+}
+
+.resultat-quantite-label,
+.selection-quantite-label{
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #3f5069 !important;
+}
+
+.bouton-ajouter,
+.bouton-retirer{
+    font: inherit;
+    font-size: 1em;
+    font-weight: 700;
+    padding: 0.6em 1.1em;
+    min-height: 44px;
+    border-radius: 6px;
+    border: 2px solid var(--color-primary);
+    cursor: pointer;
+    align-self: center;
+}
+
+.bouton-ajouter{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.bouton-ajouter:hover,
+.bouton-ajouter:focus-visible{
+    background-color: #1b5ccd;
+    border-color: var(--color-secondary);
+}
+
+.bouton-retirer{
+    background-color: var(--color-white);
+    color: var(--color-primary);
+}
+
+.bouton-retirer:hover,
+.bouton-retirer:focus-visible{
+    background-color: #fdeaea;
+    border-color: #a11717;
+    color: #a11717;
+}
+
+.bouton-ajouter:focus-visible,
+.bouton-retirer:focus-visible,
+.bouton-principal:focus-visible,
+.bouton-discret:focus-visible{
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 3px;
+}
+
+.ligne-kcal{
+    font-weight: 700;
+    min-width: 6.5em;
+    text-align: right;
+}
+
+.total-repas{
+    margin: 1.5em 0 0.5em;
+    font-size: 1.2em;
+}
+
+.bouton-principal{
+    font: inherit;
+    font-size: 1.15em;
+    font-weight: 700;
+    padding: 0.85em 1.6em;
+    min-height: 48px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1b5ccd;
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+/* #1b5ccd sur blanc = 6,07:1 ; le bleu #2a73f0 du thème tombait à 4,37:1,
+   sous le minimum AA (4,5:1) pour du texte normal. */
+.bouton-principal:hover{
+    background-color: #1150b5;
+}
+
+/* --- repas enregistrés --- */
+
+.journee{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.repas-carte{
+    border: 2px solid #d6dde8;
+    border-radius: 8px;
+    padding: 1em 1.25em;
+}
+
+.repas-entete{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1em;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #e7ecf3;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.75em;
+}
+
+.repas-total{
+    font-weight: 700;
+    color: #1c7c33 !important;
+    margin: 0;
+}
+
+.repas-produits{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.repas-produits li{
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    padding: 0.35em 0;
+}
+
+.produit-quantite{
+    color: #3f5069 !important;
+    min-width: 5em;
+    text-align: right;
+}
+
+.produit-kcal{
+    min-width: 6em;
+    text-align: right;
+    font-weight: 700;
+}
+
+.suppression{
+    margin: 0.75em 0 0;
+}
+
+.bouton-discret{
+    font: inherit;
+    font-size: 0.95em;
+    padding: 0.5em 0.9em;
+    min-height: 44px;
+    border-radius: 6px;
+    border: 2px solid #6b7c94;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.bouton-discret:hover,
+.bouton-discret:focus-visible{
+    border-color: #a11717;
+    color: #a11717;
+}
+
+.total-journee{
+    margin: 1.25em 0 0;
+    font-size: 1.2em;
+    border-top: 2px solid #e7ecf3;
+    padding-top: 1em;
+}
+
+.vide{
+    margin: 0;
+    font-style: italic;
+    color: #3f5069 !important;
+}
+
+@media (max-width: 760px){
+    .resultat{
+        grid-template-columns: 56px minmax(0, 1fr);
+    }
+
+    .resultat-quantite-bloc{
+        grid-column: 2;
+    }
+
+    .resultat .bouton-ajouter{
+        grid-column: 2;
+        justify-self: start;
+    }
+
+    .ligne-selection{
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .ligne-kcal{
+        text-align: left;
+    }
+}
+
+@media (max-width: 620px){
+    .repas-page{
+        padding: 1em 0.5em 2em;
+    }
+
+    .carte{
+        padding: 1.1em;
+    }
+
+    .jour-navigation{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Un nom de produit long écrasait les colonnes grammes/kcal sur 390 px :
+       le nom prend sa propre ligne, les valeurs se partagent la suivante. */
+    .repas-produits li{
+        flex-wrap: wrap;
+    }
+
+    .produit-nom{
+        flex: 1 1 100%;
+    }
+
+    .produit-quantite{
+        min-width: auto;
+        text-align: left;
+    }
+
+    .produit-kcal{
+        margin-left: auto;
+    }
+}

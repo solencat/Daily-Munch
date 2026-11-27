@@ -1,0 +1,345 @@
+/* Page de suivi des calories — même langage visuel que la page repas. */
+
+.suivi-page,
+.suivi-page *,
+.suivi-page *::before,
+.suivi-page *::after{
+    box-sizing: border-box;
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.suivi-page{
+    background-color: var(--color-alternative);
+    padding: 2em 1em 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+}
+
+.suivi-page h1{
+    color: var(--color-primary);
+    font-size: 2.1em;
+    margin: 0;
+}
+
+.suivi-page h2{
+    color: var(--color-primary);
+    font-size: 1.35em;
+    margin: 0 0 0.75em;
+}
+
+.suivi-page p,
+.suivi-page li,
+.suivi-page th,
+.suivi-page td{
+    color: var(--color-primary);
+}
+
+.intro{
+    margin: -0.75em 0 0;
+    color: #3f5069;
+}
+
+.intro a,
+.vide a{
+    color: #1150b5;
+    font-weight: 600;
+}
+
+/* --- périodes --- */
+
+.periodes{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    justify-content: center;
+}
+
+.periode{
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.5em 1.1em;
+    border-radius: 999px;
+    border: 2px solid var(--color-primary);
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.periode:hover,
+.periode:focus-visible{
+    background-color: #e7eefb;
+}
+
+.periode--active{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.periode--active:hover{
+    background-color: var(--color-primary);
+}
+
+.periode:focus-visible{
+    outline: 3px solid #1b5ccd;
+    outline-offset: 3px;
+}
+
+/* --- chiffres clés --- */
+
+.chiffres{
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1em;
+}
+
+.chiffre{
+    background-color: var(--color-white);
+    border-radius: 10px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.16);
+    padding: 1.1em 1.25em;
+}
+
+.chiffre h2{
+    font-size: 1em;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: #3f5069;
+    margin: 0 0 0.5em;
+    font-weight: 600;
+}
+
+.chiffre .valeur{
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.15;
+}
+
+.chiffre .unite{
+    font-size: 0.55em;
+    font-weight: 600;
+    color: #3f5069;
+}
+
+.chiffre .detail{
+    margin: 0.25em 0 0;
+    font-size: 0.95em;
+    color: #3f5069;
+}
+
+/* --- cartes --- */
+
+.carte{
+    width: 100%;
+    max-width: 1000px;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.18);
+    padding: 1.75em;
+}
+
+.aide{
+    font-size: 0.95em;
+    color: #3f5069;
+    margin: 0 0 1em;
+}
+
+.vide{
+    width: 100%;
+    max-width: 1000px;
+    margin: 0;
+    padding: 1em 1.25em;
+    background-color: #fff8dc;
+    border-left: 8px solid #ebc836;
+    border-radius: 8px;
+}
+
+/* --- graphique --- */
+
+.graphique{
+    width: 100%;
+    min-height: 340px;
+}
+
+.graphique svg{
+    display: block;
+    /* Pas de width:100% + height:auto : si un redimensionnement est manqué,
+       le SVG serait étiré selon l'ancien viewBox. Il garde sa taille, et
+       max-width le réduit proportionnellement sur écran étroit. */
+    max-width: 100%;
+    height: auto;
+}
+
+.graphique .axe text{
+    fill: #3f5069;
+    font-family: var(--font);
+    font-size: 12px;
+}
+
+.graphique .grille line{
+    stroke: #e2e8f2;
+    stroke-width: 1;
+}
+
+.graphique .barre{
+    fill: #1b5ccd;
+}
+
+.graphique .barre--aujourdhui{
+    fill: #ebc836;
+    stroke: var(--color-primary);
+    stroke-width: 2;
+}
+
+.graphique .barre--vide{
+    fill: #c9d3e2;
+}
+
+.graphique .moyenne{
+    stroke: #a11717;
+    stroke-width: 2;
+    stroke-dasharray: 6 4;
+}
+
+.graphique .moyenne-label{
+    fill: #a11717;
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 700;
+    /* Halo blanc : le libellé reste lisible au-dessus des barres et de la grille. */
+    paint-order: stroke;
+    stroke: #ffffff;
+    stroke-width: 4px;
+    stroke-linejoin: round;
+}
+
+.graphique .message-vide{
+    fill: #3f5069;
+    font-family: var(--font);
+    font-size: 15px;
+}
+
+/* --- tableau --- */
+
+.tableau-jours{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1em;
+}
+
+.tableau-jours caption{
+    text-align: left;
+    color: #3f5069;
+    font-size: 0.95em;
+    padding-bottom: 0.75em;
+}
+
+.tableau-jours th,
+.tableau-jours td{
+    padding: 0.55em 0.75em;
+    border-bottom: 1px solid #e7ecf3;
+    text-align: left;
+}
+
+.tableau-jours thead th{
+    background-color: var(--color-primary);
+    color: var(--color-white) !important;
+    font-size: 0.95em;
+}
+
+.tableau-jours tbody th{
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.tableau-jours td:nth-child(2),
+.tableau-jours thead th:nth-child(2){
+    width: 6em;
+}
+
+.tableau-jours .cellule-kcal{
+    text-align: right;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.tableau-jours thead th:nth-child(3){
+    text-align: right;
+}
+
+.tableau-jours tbody tr:nth-child(even){
+    background-color: #f7f9fc;
+}
+
+.tableau-jours .ligne-aujourdhui{
+    background-color: #fff8dc !important;
+    outline: 2px solid #d8b50f;
+}
+
+.marqueur{
+    display: inline-block;
+    margin-left: 0.5em;
+    padding: 0.1em 0.5em;
+    border-radius: 999px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 0.8em;
+    font-weight: 700;
+}
+
+.tableau-jours tfoot th,
+.tableau-jours tfoot td{
+    border-top: 2px solid var(--color-primary);
+    border-bottom: none;
+    font-weight: 700;
+}
+
+@media (max-width: 900px){
+    .chiffres{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 620px){
+    .suivi-page{
+        padding: 1em 0.5em 2em;
+    }
+
+    .carte{
+        padding: 1.1em;
+    }
+
+    .chiffres{
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .chiffre .valeur{
+        font-size: 1.6em;
+    }
+
+    .tableau-jours th,
+    .tableau-jours td{
+        padding: 0.5em 0.4em;
+        font-size: 0.95em;
+    }
+}

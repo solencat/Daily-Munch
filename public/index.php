@@ -15,6 +15,8 @@ $dotenv->load();
 
 // Importation des Controller
 use App\Controller\HomeController;
+use App\Controller\MealController;
+use App\Controller\SuiviController;
 use App\Controller\UserController;
 use App\Controller\ToolController;
 
@@ -44,6 +46,19 @@ switch ($path) {
         break;
     case '/bmi':
         $toolController->bmi();
+        break;
+    case '/repas':
+        // Instancié ici : la page d'accueil n'a pas besoin d'une connexion MySQL.
+        (new MealController())->handle();
+        break;
+    case '/repas/supprimer':
+        (new MealController())->destroy();
+        break;
+    case '/api/products':
+        (new MealController())->search();
+        break;
+    case '/suivi':
+        (new SuiviController())->handle();
         break;
     default:
         echo "Erreur 404";

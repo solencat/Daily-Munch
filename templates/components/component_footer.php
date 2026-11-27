@@ -8,7 +8,7 @@
 
         <ul class="footer-nav-link">
             <li>
-                <a href="./repas.html">REPAS</a>
+                <a href="/repas">REPAS</a>
             </li>
             <li>
                 <a href="./mes-repas.html">Mes repas</a>
@@ -35,7 +35,7 @@
 
         <ul class="footer-nav-link">
             <li>
-                <a href="./suivi.html">SUIVI</a>
+                <a href="/suivi">SUIVI</a>
             </li>
             <li>
                 <a href="./calendrier.html">Calendrier</a>
