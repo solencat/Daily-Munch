@@ -136,7 +136,7 @@ utilisateur non connecté.
 | Portion par défaut issue d'Open Food Facts | `serving_quantity` existe pour 15 % des produits ; évite de retaper 30 g | `search()` + `repas.js` |
 | Panier côté navigateur + total en direct | composer 4 produits sans 4 allers-retours serveur | `repas.js` |
 | Recalcul serveur des calories | le navigateur n'est pas une source de vérité | `MealService::validateItems()` |
-| Colonne générée `kcal` | la formule n'existe qu'à un endroit | `bdd.sql:86` |
+| Colonne générée `kcal` | la formule n'existe qu'à un endroit | `bdd.sql:93` |
 | Liste de la journée + suppression | relire et corriger ce qu'on vient de saisir | `MealController::index()`, `destroy()` |
 | Accessibilité (labels, `aria-live`, cibles 44 px) | exigence du projet | templates + CSS |
 
